@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: aqr-spring-boot-workshop
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+    datasource:
+      url: jdbc:h2:./aqr-demo;DB_CLOSE_ON_EXIT=FALSE
+      username: sa
+      password: ''
+      driver-class-name: org.h2.Driver
+    jpa:
+      database-platform: org.hibernate.dialect.H2Dialect
+
+
