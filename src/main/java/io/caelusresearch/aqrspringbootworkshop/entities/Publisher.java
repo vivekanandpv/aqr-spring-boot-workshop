@@ -80,11 +80,11 @@ public class Publisher {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Publisher publisher = (Publisher) o;
-        return publisherId == publisher.publisherId && Objects.equals(name, publisher.name) && Objects.equals(email, publisher.email) && Objects.equals(website, publisher.website) && Objects.equals(address, publisher.address) && Objects.equals(country, publisher.country) && Objects.equals(books, publisher.books);
+        return publisherId == publisher.publisherId && publisherId != 0;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(publisherId, name, email, website, address, country, books);
+        return Objects.hash(publisherId);
     }
 }

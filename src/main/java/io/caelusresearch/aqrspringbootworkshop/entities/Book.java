@@ -17,10 +17,10 @@ public class Book {
     private int edition;
     
     @ManyToOne
+//    @JoinColumn(name = "publisher_id", insertable = false, updatable = false)
     private Publisher publisher;
     
-    @JoinColumn(name = "publisher_id", insertable = false, updatable = false)
-    private int publisherId;
+//    private int publisherId;
     
     @ManyToMany
     @JoinTable(
@@ -78,13 +78,13 @@ public class Book {
         this.publisher = publisher;
     }
 
-    public int getPublisherId() {
-        return publisherId;
-    }
-
-    public void setPublisherId(int publisherId) {
-        this.publisherId = publisherId;
-    }
+//    public int getPublisherId() {
+//        return publisherId;
+//    }
+//
+//    public void setPublisherId(int publisherId) {
+//        this.publisherId = publisherId;
+//    }
 
     public Set<Author> getAuthors() {
         return authors;
@@ -98,11 +98,11 @@ public class Book {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return bookId == book.bookId && pages == book.pages && Double.compare(price, book.price) == 0 && edition == book.edition && publisherId == book.publisherId && Objects.equals(title, book.title) && Objects.equals(publisher, book.publisher) && Objects.equals(authors, book.authors);
+        return bookId == book.bookId && bookId != 0;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(bookId, title, pages, price, edition, publisher, publisherId, authors);
+        return Objects.hash(bookId);
     }
 }

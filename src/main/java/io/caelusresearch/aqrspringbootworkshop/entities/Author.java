@@ -71,11 +71,11 @@ public class Author {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Author author = (Author) o;
-        return authorId == author.authorId && Objects.equals(firstName, author.firstName) && Objects.equals(lastName, author.lastName) && Objects.equals(bio, author.bio) && Objects.equals(email, author.email) && Objects.equals(books, author.books);
+        return authorId == author.authorId && authorId != 0;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(authorId, firstName, lastName, bio, email, books);
+        return Objects.hash(authorId);
     }
 }
