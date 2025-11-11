@@ -1,17 +1,33 @@
 package io.caelusresearch.aqrspringbootworkshop.entities;
 
+import jakarta.persistence.*;
+
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+@Entity
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int bookId;
     private String title;
     private int pages;
     private double price;
     private int edition;
+    
+    @ManyToOne
     private Publisher publisher;
+    
+    @JoinColumn(name = "publisher_id", insertable = false, updatable = false)
     private int publisherId;
+    
+    @ManyToMany
+    @JoinTable(
+            name = "book_author",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id")
+    )
     private Set<Author> authors = new HashSet<>();
 
     public int getBookId() {

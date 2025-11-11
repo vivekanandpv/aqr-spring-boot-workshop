@@ -1,10 +1,15 @@
 package io.caelusresearch.aqrspringbootworkshop.entities;
 
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
 public class Publisher {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int publisherId;
     private String name;
     private String email;
@@ -12,6 +17,7 @@ public class Publisher {
     private String address;
     private String country;
     
+    @OneToMany(mappedBy = "publisher")
     private List<Book> books = new ArrayList<>();
 
     public int getPublisherId() {

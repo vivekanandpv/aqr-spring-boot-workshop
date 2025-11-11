@@ -1,15 +1,22 @@
 package io.caelusresearch.aqrspringbootworkshop.entities;
 
+import jakarta.persistence.*;
+
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+@Entity
 public class Author {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int authorId;
     private String firstName;
     private String lastName;
     private String bio;
     private String email;
+    
+    @ManyToMany(mappedBy = "authors")
     private Set<Book> books = new HashSet<>();
 
     public int getAuthorId() {
